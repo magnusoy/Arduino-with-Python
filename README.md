@@ -2,10 +2,6 @@
 
 This project is supposed to give anyone who wants to control their Arduino with Python an easy process setting up. The project provide a Python class that contains useful functions to get started. More functionality and classes will be implimented in later versions.
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
 ### Prerequisites
 
 You will need Python 3.4=< and Arduino IDE for using the provided files.
@@ -62,7 +58,7 @@ while arduino.isConnected():
 
 ## Built With
 
-* [Python](https://www.python.org/) - Python IDE
+* [Python](https://www.python.org/) - Python
 * [Arduino](https://www.arduino.cc/) - Arduino IDE
 
 ## Contributing
