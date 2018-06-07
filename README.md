@@ -30,17 +30,17 @@ import the provided class and start programming.
 In /example you will find some example scripts,
 for both Arduino and Python.
 
-'''
+```
 from arduino_serial import ArduinoSerial
 
 arduino = ArduinoSerial()
 arduino.connect("COM4", 9600)
 arduino.readLine()
-'''
+```
 
 or
 
-'''
+```
 from arduino_serial import ArduinoSerial
 
 filename = "distance.csv"
@@ -57,17 +57,13 @@ while arduino.isConnected():
 	arduino.logToFile(filename, t, y)
 	if arduino.getTimeElapsed > 10:
 		arduino.disconnect()
-'''
+```
 
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Python](https://www.python.org/) - Python IDE
+* [Arduino](https://www.arduino.cc/) - Arduino IDE
 
 ## Contributing
 
