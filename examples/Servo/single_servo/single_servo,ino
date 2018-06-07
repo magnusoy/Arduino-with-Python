@@ -1,0 +1,40 @@
+/**
+  This program will read from serial
+  and write data to servo.
+
+  It is supposed to be used with
+  Python by controlling servo over
+  Serial.
+
+  Code by: Magnus Øye, Dated: 05.06-2018
+  Contact: magnus.oye@gmail.com
+  Website: https://github.com/magnusoy
+*/
+
+// Implement Arduino, and Servo library
+#include <Servo.h>
+
+// Creating a Servo object
+Servo servo;
+
+// defining a global integer holding position
+int pos;
+
+// The setup() configures hardware (digital outputs) and serial comm.
+void setup() {
+  Serial.begin(9600);
+  servo.attach(10);
+}
+
+// loop() will run ‘forever’:
+// Change delay if servo act strange
+void loop() {
+  if (Serial.available() > 0) {
+    pos = Serial.parseInt();
+    if ((pos > 0) && ( pos < 180)) {
+      servo.write(pos);
+      Serial.println(pos);
+      delay (200); // delay in milliseconds
+    }
+  }
+}
