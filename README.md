@@ -1,2 +1,89 @@
-# Arduino-with-Python
-Send sensor data to Python for prosessing and visualization. Use Python to control LED's, motors, servos etc...
+# Arduino with Python
+
+This project is supposed to give anyone who wants to control their Arduino with Python an easy process setting up. The project provide a Python class that contains useful functions to get started. More functionality and classes will be implimented in later versions.
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+### Prerequisites
+
+You will need Python 3.4=< and Arduino IDE for using the provided files.
+Furthermore you will also have to install pySerial.
+
+```
+python -m pip install pyserial
+
+or
+
+conda install -c conda-forge pyserial
+```
+
+### Installing
+
+Simply clone or download project as Zip.
+Create a new python script within the project,
+import the provided class and start programming.
+
+### Examples
+
+In /example you will find some example scripts,
+for both Arduino and Python.
+
+'''
+from arduino_serial import ArduinoSerial
+
+arduino = ArduinoSerial()
+arduino.connect("COM4", 9600)
+arduino.readLine()
+'''
+
+or
+
+'''
+from arduino_serial import ArduinoSerial
+
+filename = "distance.csv"
+
+arduino = ArduinoSerial()
+
+arduino.createFile(filename)
+
+arduino.connect("COM4", 9600)
+
+while arduino.isConnected():
+	t = arduino.getTimeElapsed()
+	y = arduino.cleanData()
+	arduino.logToFile(filename, t, y)
+	if arduino.getTimeElapsed > 10:
+		arduino.disconnect()
+'''
+
+## Deployment
+
+Add additional notes about how to deploy this on a live system
+
+## Built With
+
+* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+* [Maven](https://maven.apache.org/) - Dependency Management
+* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+
+## Contributing
+
+If you want to contribute or find anything wrong, please create a Pull request, or issue adressing the change, or issue.
+
+
+## Author
+
+* **Magnus Øye** - *Initial work* - [magnusoy](https://github.com/magnusoy)
+
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+
+## Acknowledgments
+
+[pySerial](http://pyserial.readthedocs.io/en/latest/index.html)
