@@ -77,7 +77,7 @@ If you want to contribute or find anything wrong, please create a Pull request, 
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/magnusoy/Arduino-with-Python/blob/master/LICENSE) file for details
 
 
 ## Acknowledgments
