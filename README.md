@@ -25,7 +25,7 @@ import the provided class and start programming.
 
 ### Examples
 
-In /example you will find some example scripts,
+In [/example](https://github.com/magnusoy/Arduino-with-Python/tree/master/examples) you will find some example scripts,
 for both Arduino and Python.
 
 ```
