@@ -13,13 +13,14 @@ import serial
 import time
 
 
-class ArduinoSerial():
+class Arduino():
     """ArduinoSerial is a simple library for
         doing operations with Arduino."""
 
     def __init__(self):
-        super(ArduinoSerial, self).__init__()
         self.connection = None
+        self.port = None
+        self.baudrate = None
         self.startTime = time.time()
 
     def connect(self, port, baudrate):
@@ -35,24 +36,28 @@ class ArduinoSerial():
                 your Arduino IDE. Normally it
                 is 9600, 14400, 19200, 28800,
                  38400, 57600, or 115200."""
+        self.port = port
+        self.baudrate = baudrate
         self.connection = serial.Serial(port, baudrate)
         time.sleep(2)
-        print(f"Connection with {port} at {baudrate} braudrate made.")
+    
+    def __str__(self):
+        if self.port is None:
+            return "Arduino is not connected"
+        else:
+            return f"Arduino is on port {self.port} at {self.baudrate} baudrate"
 
-    def readLine(self):
+    def getData(self):
         """Reads from the serial port.
-            Will wait for result before
+            will wait for result before
             proceeding to next step.
             Returns
             -------
-            byte
-                Returns a byte of string."""
-        print(self.connection.readline())
-        return self.connection.readline()
-
-    def continuousReadLine(self):
-        if self.connection.inWaiting() > 0:
-            self.readLine()
+            str
+                Output as a string."""
+        raw = self.connection.readline()
+        cleaned = raw.decode('latin-1')
+        return cleaned.rstrip('\n')
 
     def sendCommand(self, command):
         """Sends the following command to
@@ -78,27 +83,15 @@ class ArduinoSerial():
             self.sendCommand(command)
             self.delay(delay)
 
-    def turnLedOn(self):
-        """Sends 1 to Arduino board"""
+    def setHigh(self):
+        """Sends 1 out to Arduino board"""
         self.connection.write("1".encode())
 
-    def turnLedOff(self):
-        """Sends 0 to Arduino board"""
+    def setLow(self):
+        """Sends 0 out to Arduino board"""
         self.connection.write("0".encode())
 
-    def cleanData(self):
-        """Remove unnecessary text from
-            readLine. Leaving only the
-            recived text or number.
-            Returns
-            -------
-            str
-            cleaned string"""
-        rawData = self.connection.readline()
-        cleanedData = str(rawData)[2:-5]
-        return cleanedData
-
-    def logToFile(self, filename, x, y):
+    def logToFile(self, filename, data):
         """Logs data to a already
             existing file.
             Parameters
@@ -109,8 +102,12 @@ class ArduinoSerial():
                 first varibale.
             y: str
                 second variable"""
+        #lst = [', '.join(map(str, x)) for x in args]
+        #data = ''.join(lst)
+        lst = data.split(',')
+        data = ','.join(lst)
         with open(filename, 'a') as file:
-            file.write(f"{x},{y}\n")
+            file.write(f"{data}")
 
     def createFile(self, filename):
         """Creates a new file.
@@ -159,3 +156,4 @@ class ArduinoSerial():
             with the Arduino."""
         self.connection.close()
         print("Arduino disconnected.")
+        return True
