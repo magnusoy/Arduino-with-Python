@@ -1,14 +1,14 @@
-from arduino_serial import ArduinoSerial
+from arduino_serial import Arduino
 
-arduino = ArduinoSerial()
+arduino = Arduino()
 arduino.connect("COM4", 9600)
 print("Turn LED On or Off.\n")
 while arduino.isConnected():
 	switch = input("Turn light:")
 
 	if switch == "On":
-		arduino.turnLedOn()
+		arduino.setHigh()
 	elif switch == "Off":
-		arduino.turnLedOff()
+		arduino.setLow()
 	if switch == "q":
 		arduino.disconnect()
