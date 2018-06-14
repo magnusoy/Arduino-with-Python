@@ -77,8 +77,10 @@ If you want to contribute or find anything wrong, please create a Pull request, 
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/magnusoy/Arduino-with-Python/blob/master/LICENSE) file for details
 
 
-## Acknowledgments
+## Libraries
 
 [pySerial](http://pyserial.readthedocs.io/en/latest/index.html)
+
 [Matplotlib](https://matplotlib.org/index.html)
+
 [pandas](https://pandas.pydata.org/)
