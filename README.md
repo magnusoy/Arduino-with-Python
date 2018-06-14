@@ -1,11 +1,11 @@
 # Arduino with Python
 
-This project is supposed to give anyone who wants to control their Arduino with Python an easy process setting up. The project provide a Python class that contains useful functions to get started. More functionality and classes will be implimented in later versions.
+This project is supposed to give anyone who wants to control their Arduino with Python an easy process setting up. The project provide a Python class that contains useful functions to get started. It also contains a visualizer class for showcasing stored data acquired from the Arduino. More functionality and classes will be implimented in later versions.
 
 ### Prerequisites
 
-You will need [Python](https://www.python.org/) 3.4=< and [Arduino IDE](https://www.arduino.cc/) for using the provided files.
-Furthermore you will also have to install some dependencies.
+You will need [Python 3.4](https://www.python.org/) and [Arduino IDE](https://www.arduino.cc/) for using the provided files.
+Also you will need to install dependencies listed below.
 
 ```
 python pip install -r /path/to/requirements.txt
@@ -19,15 +19,16 @@ python pip install pandas==0.23.0
 
 ### Installing
 
-Simply clone or download project as Zip.
-Create a new python script within the project,
-import the provided class and start programming.
+Clone or download project as zip in any directory.
+Create a new python script within the directory,
+import the provided classes and start programming.
 
 ### Examples
 
 In [/example](https://github.com/magnusoy/Arduino-with-Python/tree/master/examples) you will find some example scripts,
 for both Arduino and Python.
 
+Reading data example
 ```
 from arduino import Arduino
 
@@ -36,7 +37,7 @@ arduino.connect("COM4", 9600)
 arduino.getData()
 ```
 
-or
+Storing data in file
 
 ```
 from arduino import Arduino
