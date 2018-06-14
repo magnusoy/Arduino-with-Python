@@ -4,7 +4,7 @@ This project is supposed to give anyone who wants to control their Arduino with 
 
 ### Prerequisites
 
-You will need Python 3.4=< and Arduino IDE for using the provided files.
+You will need [Python](https://www.python.org/) 3.4=< and [Arduino IDE](https://www.arduino.cc/) for using the provided files.
 Furthermore you will also have to install some dependencies.
 
 ```
