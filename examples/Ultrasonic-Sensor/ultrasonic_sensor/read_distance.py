@@ -1,6 +1,6 @@
-from arduino_serial import ArduinoSerial
+from arduino import Arduino
 
-arduino = ArduinoSerial()
+arduino = Arduino()
 arduino.connect("COM4", 9600)
 while arduino.isConnected():
-    arduino.readLine()
+    print(arduino.getData())
