@@ -3,18 +3,19 @@
 Class to send and recive data from
 Serial connection with an Arduino.
 
-Code by: Magnus Øye, Dated: 05.06-2018
+Code by: Magnus Øye, Dated: 14.06-2018
 Contact: magnus.oye@gmail.com
-Website: https://github.com/magnusoy
+Website: https://github.com/magnusoy/Arduino-with-Python
 """
 
 # importing nessary libraries
 import serial
 import time
+import os
 
 
 class Arduino():
-    """ArduinoSerial is a simple library for
+    """Arduino is a simple library for
         doing operations with Arduino."""
 
     def __init__(self):
@@ -61,7 +62,7 @@ class Arduino():
 
     def sendCommand(self, command):
         """Sends the following command to
-            Arduino board.
+            Arduino.
             Parameters
             ----------
             command: str
@@ -91,32 +92,52 @@ class Arduino():
         """Sends 0 out to Arduino board"""
         self.connection.write("0".encode())
 
-    def logToFile(self, filename, data):
+    def logData(self, filename, data):
         """Logs data to a already
-            existing file.
+            existing  or a new file.
             Parameters
             ----------
             filename: str
                 filepath
-            x: str
-                first varibale.
-            y: str
-                second variable"""
-        #lst = [', '.join(map(str, x)) for x in args]
-        #data = ''.join(lst)
+            data: str
+                data string"""
         lst = data.split(',')
         data = ','.join(lst)
         with open(filename, 'a') as file:
             file.write(f"{data}")
-
-    def createFile(self, filename):
-        """Creates a new file.
+    
+    def logDataWithTime(self, filename, data):
+        """Logs data to a already
+            existing  or a new file,
+            with time in first column.
             Parameters
             ----------
             filename: str
-                filepath"""
-        with open(filename, 'w') as file:
-            file.write("time,distance\n")
+                filepath
+            data: str
+                data string"""
+        t = self.getTimeElapsed()
+        lst = data.split(',')
+        data = ','.join(lst)
+        with open(filename, 'a') as file:
+            file.write(f"{t} + {data}")
+
+    def createLogfile(self, filename, *columns):
+        """Creates a new file with
+            assigned columns.
+            Parameters
+            ----------
+            filename: str
+                filepath
+            columns: tuple
+                columns"""
+        lst = [','.join(map(str, x)) for x in columns]
+        columns = ''.join(lst)
+        if os.path.isfile(filename) == True:
+            print(f"{filename} already exist, please rename file")
+        else:
+            with open(filename, 'w') as file:
+                file.write(f"{columns}\n")
 
     def getTimeElapsed(self):
         """Get time since object was
