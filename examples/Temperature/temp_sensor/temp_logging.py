@@ -1,8 +1,8 @@
-from arduino_serial import Arduino
+from arduino import Arduino
 
 filename = "temperature.csv"
 
-arduino = ArduinoSerial()
+arduino = Arduino()
 
 arduino.createLogfile(filename)
 
