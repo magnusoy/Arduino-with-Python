@@ -33,7 +33,7 @@ from arduino import Arduino
 
 arduino = Arduino()
 arduino.connect("COM4", 9600)
-arduino.readLine()
+arduino.getData()
 ```
 
 or
