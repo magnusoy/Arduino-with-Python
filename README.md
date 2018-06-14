@@ -27,9 +27,9 @@ In /example you will find some example scripts,
 for both Arduino and Python.
 
 ```
-from arduino_serial import ArduinoSerial
+from arduino import Arduino
 
-arduino = ArduinoSerial()
+arduino = Arduino()
 arduino.connect("COM4", 9600)
 arduino.readLine()
 ```
@@ -37,20 +37,19 @@ arduino.readLine()
 or
 
 ```
-from arduino_serial import ArduinoSerial
+from arduino import Arduino
 
 filename = "distance.csv"
 
-arduino = ArduinoSerial()
+arduino = Arduino()
 
 arduino.createFile(filename)
 
 arduino.connect("COM4", 9600)
 
 while arduino.isConnected():
-	t = arduino.getTimeElapsed()
-	y = arduino.cleanData()
-	arduino.logToFile(filename, t, y)
+	data = arduino.getData()
+	arduino.logToFile(filename, data)
 	if arduino.getTimeElapsed > 10:
 		arduino.disconnect()
 ```
