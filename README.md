@@ -5,14 +5,16 @@ This project is supposed to give anyone who wants to control their Arduino with 
 ### Prerequisites
 
 You will need Python 3.4=< and Arduino IDE for using the provided files.
-Furthermore you will also have to install pySerial.
+Furthermore you will also have to install some dependencies.
 
 ```
-python -m pip install pyserial
+python pip install -r /path/to/requirements.txt
 
 or
 
-conda install -c conda-forge pyserial
+python pip install serial==3.4
+python pip install matplotlib==2.2.2
+python pip install pandas==0.23.0
 ```
 
 ### Installing
@@ -67,7 +69,7 @@ If you want to contribute or find anything wrong, please create a Pull request, 
 
 ## Author
 
-* **Magnus Øye** - *Initial work* - [magnusoy](https://github.com/magnusoy)
+* **Magnus Øye** - [magnusoy](https://github.com/magnusoy)
 
 
 ## License
@@ -78,3 +80,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](https://gi
 ## Acknowledgments
 
 [pySerial](http://pyserial.readthedocs.io/en/latest/index.html)
+[Matplotlib](https://matplotlib.org/index.html)
+[pandas](https://pandas.pydata.org/)
