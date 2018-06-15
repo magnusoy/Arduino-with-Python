@@ -77,7 +77,7 @@ while arduino.isConnected():
 data_presenter = Visualize(filename)
 dataset = data_presenter.collectData()
 figure = data_presenter.lineplot(dataset["Time"], dataset["Measure_value"])
-data_presenter.savePlot(figure, "PID_Time_Measure.png")
+data_presenter.savePlot(figure, "Output.png")
 
 ```
 ![Output](https://github.com/magnusoy/Arduino-with-Python/blob/master/src/Output.png)
