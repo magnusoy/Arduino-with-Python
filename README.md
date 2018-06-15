@@ -80,6 +80,7 @@ figure = data_presenter.lineplot(dataset["Time"], dataset["Measure_value"])
 data_presenter.savePlot(figure, "PID_Time_Measure.png")
 
 ```
+![Line Graph](https://github.com/magnusoy/Arduino-with-Python/blob/master/PID_Time_Measure.png)
 
 
 ## Built With
