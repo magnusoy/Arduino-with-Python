@@ -4,7 +4,7 @@ This project is supposed to give anyone who wants to control their Arduino with 
 
 ### Prerequisites
 
-You will need [Python 3.6](https://www.python.org/) and [Arduino IDE](https://www.arduino.cc/) for using the provided files.
+You will need [Python 3](https://www.python.org/) and [Arduino IDE](https://www.arduino.cc/) for using the provided files.
 Also you will need to install dependencies listed below.
 
 ```bash
@@ -53,7 +53,7 @@ arduino.connect("COM4", 9600)
 while arduino.isConnected():
 	data = arduino.getData()
 	arduino.logToFile(filename, data)
-	if arduino.getTimeElapsed > 10:
+	if arduino.getTimeElapsed() > 10:
 		arduino.disconnect()
 ```
 
