@@ -7,7 +7,7 @@ This project is supposed to give anyone who wants to control their Arduino with 
 You will need [Python 3.6](https://www.python.org/) and [Arduino IDE](https://www.arduino.cc/) for using the provided files.
 Also you will need to install dependencies listed below.
 
-```
+```bash
 python pip install -r /path/to/requirements.txt
 
 or
@@ -29,7 +29,7 @@ In [/example](https://github.com/magnusoy/Arduino-with-Python/tree/master/exampl
 for both Arduino and Python.
 
 Reading data example
-```
+```python
 from arduino import Arduino
 
 arduino = Arduino()
@@ -39,7 +39,7 @@ arduino.getData()
 
 Storing data in file
 
-```
+```python
 from arduino import Arduino
 
 filename = "distance.csv"
