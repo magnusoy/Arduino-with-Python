@@ -28,7 +28,7 @@ import the provided classes and start programming.
 In [/example](https://github.com/magnusoy/Arduino-with-Python/tree/master/examples) you will find some example scripts,
 for both Arduino and Python.
 
-Reading data example
+- Reading data example
 ```python
 from arduino import Arduino
 
@@ -38,7 +38,7 @@ arduino.getData()
 
 ```
 
-Storing data in file
+- Storing data in file
 
 ```python
 from arduino import Arduino
@@ -55,7 +55,7 @@ while arduino.isConnected():
 		arduino.disconnect()
 		
 ```
-Storing data in file and
+- Storing data in file and
 presenting it in a line graph
 ```python
 from arduino import Arduino
