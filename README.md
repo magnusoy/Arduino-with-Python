@@ -35,6 +35,7 @@ from arduino import Arduino
 arduino = Arduino()
 arduino.connect("COM4", 9600)
 arduino.getData()
+
 ```
 
 Storing data in file
@@ -52,6 +53,32 @@ while arduino.isConnected():
 	arduino.logToFile(filename, data)
 	if arduino.getTimeElapsed() > 10:
 		arduino.disconnect()
+		
+```
+Storing data in file and
+presenting it in a line graph
+```python
+from arduino import Arduino
+from visualize import Visualize
+
+arduino = Arduino()
+filename = "PID_Controller.csv"
+arduino.createLogfile(
+    filename, ("Time", "Set_value", "Measure_value", "Output"))
+arduino.connect("COM4", 9600)
+
+while arduino.isConnected():
+    data = arduino.getData()
+    arduino.logDataWithTime(filename, data)
+    # Ending measurement sampling after 10 sec
+    if arduino.getTimeElapsed() > 10:
+        arduino.disconnect()
+
+data_presenter = Visualize(filename)
+dataset = data_presenter.collectData()
+figure = data_presenter.lineplot(dataset["Time"], dataset["Measure_value"])
+data_presenter.savePlot(figure, "PID_Time_Measure.png")
+
 ```
 
 
