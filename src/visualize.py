@@ -3,7 +3,7 @@
 Class to present and plot
 data gathered from Arduino.
 
-Code by: Magnus Øye, Dated: 14.06-2018
+Code by: Magnus Øye, Dated: 15.06-2018
 Contact: magnus.oye@gmail.com
 Website: https://github.com/magnusoy/Arduino-with-Python
 """
@@ -27,15 +27,15 @@ class Visualize:
             datapath : str
                 data location"""
         self.datapath = datapath
-        self.data = pd.read_csv(self.datapath)
+        self.data = pd.read_csv(self.datapath, error_bad_lines=False, encoding="latin-1")
 
-    def getData(self):
+    def collectData(self):
         """Presents dataframe
            Returns
             ----------
             data : Dataframe
                 Dataframe of all the entries"""
-        return self.data
+        return self.data.dropna()
     
     def viewDataHead(self):
         """Presents dataframe of first
@@ -95,5 +95,3 @@ class Visualize:
             filename: str
                 filepath"""
         figure.savefig(filename)
-
-        
