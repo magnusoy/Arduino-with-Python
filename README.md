@@ -42,12 +42,9 @@ Storing data in file
 ```python
 from arduino import Arduino
 
-filename = "distance.csv"
-
+filename = "measurements.csv"
 arduino = Arduino()
-
-arduino.createFile(filename)
-
+arduino.createLogfile(filename, ("A", "B", "C"))
 arduino.connect("COM4", 9600)
 
 while arduino.isConnected():
