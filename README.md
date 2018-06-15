@@ -12,7 +12,7 @@ python pip install -r /path/to/requirements.txt
 
 or
 
-python pip install serial==3.4
+python pip install serial==0.0.66
 python pip install matplotlib==2.2.2
 python pip install pandas==0.23.0
 ```
