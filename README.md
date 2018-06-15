@@ -8,13 +8,13 @@ You will need [Python 3](https://www.python.org/) and [Arduino IDE](https://www.
 Also you will need to install dependencies listed below.
 
 ```bash
-python pip install -r /path/to/requirements.txt
+pip install -r /path/to/requirements.txt
 
 or
 
-python pip install serial==0.0.66
-python pip install matplotlib==2.2.2
-python pip install pandas==0.23.0
+pip install serial==0.0.66
+pip install matplotlib==2.2.2
+pip install pandas==0.23.0
 ```
 
 ### Installing
