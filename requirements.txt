@@ -1,3 +1,4 @@
 pyserial==3.4
 matplotlib==2.2.2
 pandas==0.23.0
+drawnow==0.72.0
