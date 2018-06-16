@@ -15,6 +15,7 @@ or
 pip install pyserial==3.4
 pip install matplotlib==2.2.2
 pip install pandas==0.23.0
+pip install drawnow==0.72.0
 ```
 
 ### Installing
