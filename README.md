@@ -82,7 +82,7 @@ figure = data_presenter.plot(dataset["Time"], dataset["Value"])
 data_presenter.savePlot(figure, "Output.png")
 
 ```
-![Output](https://github.com/magnusoy/Arduino-with-Python/blob/master/src/Output.png)
+![Output](https://github.com/magnusoy/Arduino-with-Python/blob/master/img/Output.png)
 
 
 ## Built With
