@@ -60,7 +60,7 @@ class Arduino():
         cleaned = raw.decode('latin-1')
         return cleaned.rstrip('\n')
 
-    def sendCommand(self, command):
+    def sendCommand(self, command, delay=0):
         """Sends the following command to
             Arduino.
             Parameters
@@ -68,6 +68,7 @@ class Arduino():
             command: str
                     Command to be sent"""
         self.connection.write(command.encode())
+        self.delay(delay)
         # print(f"{command} is sent to Arduino")
 
     def sendMultipleCommands(self, commands, delay):
@@ -120,7 +121,7 @@ class Arduino():
         lst = data.split(',')
         data = ','.join(lst)
         with open(filename, 'a') as file:
-            file.write(f"{t} + {data}")
+            file.write(f"{t},{data}")
 
     def createLogfile(self, filename, *columns):
         """Creates a new file with
@@ -149,6 +150,21 @@ class Arduino():
             """
         timeElapsed = time.time() - self.startTime
         return timeElapsed - 2
+
+    def sendCommandsFromFile(self, filename, delay=0):
+        """Read from .txt file and sends each
+            line from file to the Arduino.
+            Parameters
+            ----------
+            filename: str
+                filepath
+            delay: int
+                time between each command (seconds)"""
+        with open(filename, 'r') as file:
+             line = file.readlines()
+        as_string = ''.join(str(e) for e in line)
+        lst = list(as_string.replace('\n',''))
+        self.sendMultipleCommands(lst, delay)
 
     def delay(self, delay):
         """Delays prosess, program
