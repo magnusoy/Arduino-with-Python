@@ -62,21 +62,23 @@ from arduino import Arduino
 from visualize import Visualize
 
 arduino = Arduino()
-filename = "PID_Controller.csv"
+filename = "ultrasonic_readings.csv"
 arduino.createLogfile(
-    filename, ("Time", "Set_value", "Measure_value", "Output"))
-arduino.connect("COM4", 9600)
+    filename, ("Time", "Value"))
+arduino.connect("COM4", 115200)
 
 while arduino.isConnected():
     data = arduino.getData()
     arduino.logDataWithTime(filename, data)
+    arduino.delay(0.1)
+    
     # Ending measurement sampling after 10 sec
     if arduino.getTimeElapsed() > 10:
         arduino.disconnect()
 
-data_presenter = Visualize(filename)
-dataset = data_presenter.collectData()
-figure = data_presenter.lineplot(dataset["Time"], dataset["Measure_value"])
+data_presenter = Visualize()
+dataset = data_presenter.collectData(filename)
+figure = data_presenter.plot(dataset["Time"], dataset["Value"])
 data_presenter.savePlot(figure, "Output.png")
 
 ```
